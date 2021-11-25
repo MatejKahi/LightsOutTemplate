@@ -27,7 +27,7 @@ public class GameController {
     @FXML
     public void initialize() {
         // TODO: Change here with your own impl
-        game = new Game();
+        game = new Game(SIZE,SIZE);
         // TODO: Change here with your own impl
 
         if (game != null) {
@@ -41,11 +41,11 @@ public class GameController {
                     int y = j;
                     int x = i;
                     cell.setOnMouseClicked(event -> {
-                        game.makeMove(x, y);
+                        game.makeMove(y, x);
                         rerender();
                     });
 
-                    cells[x][y] = cell;
+                    cells[y][x] = cell;
                     gpGame.add(cell, i + 1, j + 1);
                 }
             }
@@ -62,7 +62,7 @@ public class GameController {
         boolean[][] grid = game.getGrid();
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
-                cells[i][j].setStyle("-fx-background-color: " + (grid[i][j] ? "gray" : "white") + "; -fx-border-color: rgba(0, 0, 0, 0.2); -fx-border-width: 0.5");
+                cells[i][j].setStyle("-fx-background-color: " + (grid[i][j] ? "white" : "gray") + "; -fx-border-color: rgba(0, 0, 0, 0.2); -fx-border-width: 0.5");
             }
         }
 
